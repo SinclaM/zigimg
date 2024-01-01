@@ -68,7 +68,7 @@ pub fn BufferedStreamSourceReader(comptime BufferSize: usize) type {
                             self.resetBufferedReader();
                         }
                     } else if (amt < 0) {
-                        const absolute_amt = @abs(amt);
+                        const absolute_amt: usize = @intCast(@abs(amt));
                         if (absolute_amt <= self.buffered_reader.start) {
                             self.buffered_reader.start -%= absolute_amt;
                         } else {
